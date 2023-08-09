@@ -2,15 +2,17 @@ def fibonacci_last_digit(n):
     if n <= 1:
         return n
 
-    previous = 0
-    current  = 1
+    previous_digit = 0
+    current_digit = 1
 
     for _ in range(n - 1):
-        previous, current = current, previous + current
+        previous_digit, current_digit = (
+            current_digit,
+            (previous_digit + current_digit) % 10,
+        )
 
-    return current % 10
+    return current_digit
 
 
-if __name__ == '__main__':
-    n = int(input())
-    print(fibonacci_last_digit(n))
+n = int(input())
+print(fibonacci_last_digit(n))
